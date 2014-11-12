@@ -1,0 +1,14 @@
+.header {
+	padding: $base-spacing-unit*2 $base-spacing-unit 0 $base-spacing-unit;
+	text-align: center;
+
+	&__title {
+		margin-bottom: $half-spacing-unit;
+
+		& > a {
+			font-weight: 200;
+			text-decoration: none;
+			color: inherit;
+		}
+	}
+}

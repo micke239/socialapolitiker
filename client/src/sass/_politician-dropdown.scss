@@ -1,0 +1,14 @@
+.politician-dropdown {
+	padding: $half-spacing-unit $base-spacing-unit;
+	text-align: left;
+
+	&.active {
+		display: block;
+	}
+
+	&__letter-heading {
+		margin: $base-spacing-unit 0;
+		padding: 0 0 $half-spacing-unit $half-spacing-unit;
+		border-bottom: 1px solid $gray-light;
+	}
+}

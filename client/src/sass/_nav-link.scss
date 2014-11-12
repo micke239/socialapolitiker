@@ -1,0 +1,23 @@
+.nav-link {
+	&__image {
+		width: 30px;
+		height: 30px;
+		display: inline-block;
+		margin-right: $half-spacing-unit;
+	}
+
+	&__image-wrapper {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	&__text {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	&:hover &__text {
+		text-decoration: underline;
+	}	
+}
+

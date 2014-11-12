@@ -1,0 +1,23 @@
+{
+	"name": "socialapolitiker",
+	"description": "node.js packages for socialapolitiker UI.",
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/socialapolitiker/socialapolitiker.git"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"bower": "1.3.2",
+		"gulp": "3.8.7",
+		"gulp-browserify": "*",
+		"gulp-uglify": "*"
+	},
+	"scripts": {
+		"prepublish": "bower install --config.interactive=false",
+		"build": "gulp build",
+		"css": "compass compile --boring; gulp css",
+		"js": "gulp js",
+		"static-files": "gulp static-files",
+		"img": "gulp img"
+	}
+}

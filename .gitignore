@@ -1,0 +1,11 @@
+/client/node_modules/
+/client/dist/
+/client/build/
+/client/bower_components/
+/client/.sass-cache/
+
+/server/bin/
+/server/build/
+
+.DS_Store
+.gradle

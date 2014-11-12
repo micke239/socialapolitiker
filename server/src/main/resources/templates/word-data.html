@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org/">
+<head></head>
+<body>
+	<div th:fragment="words-used">
+		<div class="island">
+			<h2>Ord som använts</h2>
+			<table class="tweet-words">
+				<tr th:each="word : ${words}" th:with="highestCount = ${words[0].count}">
+					<td class="tweet-words__word-col">
+						<div class="tweet-words__word" th:text="${word.word + ' (' + word.count + ')'}">ska (1735)</div>	
+					</td>
+					<td class="tweet-words__bar-col">
+						<span class="tweet-words__bar" th:style="'width:' + ${beans.usedWordsHelper.calculateBarWidth(word.count, highestCount)} + '%'"></span>
+					</td>
+				</tr>
+			</table>
+			<button class="btn btn--full btn--primary push--top">Visa fler ord</button>
+		</div>
+	</div>
+	<div th:fragment="popular-words">
+		<div class="island">
+			<h2>Populära ord per månad</h2>
+			<div th:each="word : ${popularWords}">
+				<span th:text="${beans.dateFormatter.formatMonth(word.month) + ' ' + word.year}">januari 2014</span>: 
+				<strong th:text="${word.word}">kan</strong>, <span th:text="${word.count}">15</span> gånger
+			</div>
+		</div>
+	</div>
+</body>
+</html>

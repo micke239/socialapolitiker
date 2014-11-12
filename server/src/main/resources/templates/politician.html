@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Socialapolitiker.se - Ordbaserad statistik från Sveriges politiker</title>
+</head>
+<body>
+	<main layout:fragment="main-content">
+		<h1 th:text="${politician.name}">Anders Schröder</h1>
+		<div class="grid">
+			<div class="grid__item one-whole desk-one-half">
+				<div th:include="word-data :: words-used" th:with="words=${wordViewData.words}" />
+			</div><!--
+		 --><div class="grid__item one-whole lap-one-half desk-one-half">
+				<div th:include="word-data :: popular-words" th:with="popularWords=${wordViewData.popularWords}" />
+			</div>
+		</div>
+	</main>
+</body>
+</html>

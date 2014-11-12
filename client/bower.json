@@ -1,0 +1,22 @@
+{
+	"name": "socialapolitiker-client",
+	"homepage": "https://github.com/micke239/socialapolitiker",
+	"authors": [
+		"micke239 micke239@gmail.com"
+	],
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"jquery": "> 0",
+		"backbone": "> 0",
+		"lodash": "> 0",
+		"inuit.css": "> 0",
+		"fontawesome": "> 0"
+	}
+}

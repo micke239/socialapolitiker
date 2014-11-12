@@ -1,0 +1,32 @@
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family:$font-family;
+	@include font-size(14px);
+	background-color: $almost-white;
+}
+
+h1, h2, h3, h4, h5, h6, .alpha, .beta, .gamma, .delta, .epsilon, .zeta {
+	font-weight: 200;
+}
+
+h2, .beta {
+	margin-bottom: $base-spacing-unit;
+}
+
+a {
+	&, &:visited, &:hover {
+		color: inherit;
+		font-weight: bold;
+	}
+
+	&, &:visited {
+		text-decoration: none;
+	}
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

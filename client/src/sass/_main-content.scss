@@ -1,0 +1,9 @@
+.main-content {
+	padding: $base-spacing-unit;
+
+	@include media-query(desk) {
+		max-width: 1024px;
+		margin: 0 auto;
+		padding: $base-spacing-unit * 2;
+	}
+}

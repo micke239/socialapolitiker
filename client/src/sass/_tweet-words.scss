@@ -1,0 +1,28 @@
+.tweet-words {
+
+	&__word-col {
+		width: 1%;
+		max-width: 40%;
+		padding: $half-spacing-unit;
+		border-bottom: 1px dotted $gray-light;
+	}
+
+	&__word {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		max-width: 100%;
+		white-space: nowrap;
+	}
+
+	&__bar-col {
+		padding: $half-spacing-unit;
+		border-bottom:1px dotted $gray-light;
+	}
+
+	&__bar {
+		background-color: $gray-light;
+		height: 100%;
+		vertical-align: middle;
+		display: inline-block;
+	}
+}
