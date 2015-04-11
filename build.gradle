@@ -16,6 +16,7 @@ apply plugin: 'application'
 
 
 group = 'socialapolitiker'
+mainClassName = 'socialapolitiker.Application'
 
 configure(allprojects) {
     apply plugin: 'eclipse'
