@@ -6,9 +6,17 @@
 <title>Socialapolitiker.se - Ordbaserad statistik från Sveriges politiker</title>
 </head>
 <body>
-	<main layout:fragment="main-content">
-		<p class="home push--bottom">Här på socialapolitiker.se hittar du statistik framtagen av ord svenska politiker använder i sina twitterflöden. Välj parti och politiker i navigationsbaren ovan för att komma igång!</p>
-		<p class="home">Den data som visas upp är sammanställd från politikernas egna twitter konton.</p>
-	</main>
+	<main layout:fragment="content">
+		<h1 class="page-title">Partier</h1><!-- 
+	 --><a class="navigator" th:each="party : ${parties}" th:href="'/parti/' + ${party.urlName}">
+			<span class="navigator__image-wrapper">
+				<i th:class="'navigator__image party-icon-' + ${party.urlName}"></i>
+			</span>
+			<span class="navigator__text" th:text="${party.name}">{{party.name}}</span>
+		</a><!--
+ --></main>
+	<aside layout:fragment="aside">
+ 		<div class="islet" th:include="politician-nav :: render" th:with="politicians=${politicians}"></div>
+	</aside>
 </body>
 </html>

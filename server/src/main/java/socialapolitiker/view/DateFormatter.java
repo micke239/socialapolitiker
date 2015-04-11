@@ -15,8 +15,8 @@ public class DateFormatter {
         return DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(date);
     }
 
-    public String formatMonth(int month) {
-        String monthDisplayName = Month.of(month).getDisplayName(TextStyle.FULL, Locale.getDefault());
+    public String formatMonth(Month month) {
+        String monthDisplayName = month.getDisplayName(TextStyle.FULL, Locale.getDefault());
 
         return StringUtils.capitalize(monthDisplayName);
     }

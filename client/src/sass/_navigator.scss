@@ -1,0 +1,81 @@
+$navigator-border-color: $brand-light;
+
+.navigator {
+	@extend .one-whole;
+
+	padding: 18px 0;
+	text-align:center;
+	display: inline-block;
+	
+	border: 1px solid $navigator-border-color;
+	border-top:0;
+	background: $brand-lightest;
+	
+	&:first-of-type {
+		border-top: 1px solid $navigator-border-color;
+	}
+	
+	&__image {
+		width: 30px;
+		height: 30px;
+		display: inline-block;
+		margin-right: $half-spacing-unit;
+	}
+
+	&__image-wrapper {
+		display: inline-block;
+		vertical-align: middle;
+		height: 30px;
+	}
+
+	&__text {
+		display: inline-block;
+		vertical-align: middle;
+		font-weight: normal;
+	}
+
+	&:hover {
+		background: inherit;
+	}
+
+	&:hover, &:hover &__text {
+		text-decoration: none;
+	}
+	
+	// extra lap styling
+	@extend .lap-one-half;
+	@include media-query(lap){
+      	border-right: 1px solid $navigator-border-color;
+    	
+        &:nth-of-type(2n) {
+        	border-left:0;
+        }
+
+        &:nth-of-type(-n+2) {
+        	border-top: 1px solid $navigator-border-color;
+        }
+        
+        &:nth-of-type(2n-1) {
+        	border-left: 1px solid $navigator-border-color;
+        }      
+    }
+    
+    //extra desktop styling
+    @extend .desk-one-quarter;
+    @include media-query(desk){
+    	border-right: 1px solid $navigator-border-color;
+    	
+        &:nth-of-type(n+2) {
+        	border-left: 0;
+        }
+
+        &:nth-of-type(-n+4) {
+        	border-top: 1px solid $navigator-border-color;
+        }
+        
+        &:nth-of-type(4n-3) {
+        	border-left: 1px solid $navigator-border-color;
+        }
+    }
+}
+

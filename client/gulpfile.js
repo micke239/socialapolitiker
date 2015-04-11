@@ -3,8 +3,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify');
 
 var jsAliases = [
-    ['../../bower_components/lodash/dist/lodash.js', 'underscore'],
-    ['../../bower_components/jquery/dist/jquery.js','jquery']
+//    ['../../bower_components/jquery/dist/jquery.js','jquery']
     //['../../bower_components/backbone/backbone.js','backbone']
 ];
 

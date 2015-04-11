@@ -2,8 +2,8 @@ package socialapolitiker.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import socialapolitiker.model.domain.KeyValueCache;
+import socialapolitiker.model.domain.Tweet;
 
-public interface TweetRepository extends JpaRepository<KeyValueCache, String> {
+public interface TweetRepository extends JpaRepository<Tweet, String> {
 
 }

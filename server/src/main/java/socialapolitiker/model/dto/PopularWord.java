@@ -1,33 +1,30 @@
 package socialapolitiker.model.dto;
 
-import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class PopularWord {
-    private final int year;
-    private final int month;
-    private final String word;
-    private final int count;
+    private LocalDate date;
+    private String word;
+    private long count;
 
-    public PopularWord(Integer year, Integer month, String word, BigDecimal count) {
-        this.year = year;
-        this.month = month;
+    public PopularWord() {
+    }
+
+    public PopularWord(LocalDate date, String word, long count) {
+        this.date = date;
         this.word = word;
-        this.count = count.intValue();
+        this.count = count;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public int getMonth() {
-        return month;
+    public LocalDate getDate() {
+        return date;
     }
 
     public String getWord() {
         return word;
     }
 
-    public int getCount() {
+    public long getCount() {
         return count;
     }
 

@@ -31,23 +31,15 @@
 /* MY STUFF */
 @import "base";
 @import "helpers";
-@import "nav-link";
-@import "main-nav";
+@import "navigator";
 @import "header";
-@import "party-dropdown";
-@import "politician-dropdown";
-@import "words";
 @import "main-content";
 @import "site-wrapper";
 @import "footer";
 @import "home";
 @import "tweet-words";
+@import "politician-nav";
+@import "popular-words";
+@import "search";
+@import "page-title";
 
-/**
- * She’s all yours, cap’n... Begin importing your stuff here.
- */
-//@import "ui/example";
-
-
-// @import "blocks/header";
-// @import "blocks/footer";

@@ -14,8 +14,6 @@
 	],
 	"dependencies": {
 		"jquery": "> 0",
-		"backbone": "> 0",
-		"lodash": "> 0",
 		"inuit.css": "> 0",
 		"fontawesome": "> 0"
 	}

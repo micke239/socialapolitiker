@@ -5,8 +5,8 @@
   <head>
 	  <meta charset="UTF-8" />
 
-	  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
-	  <meta name="description" content="{{metadata.description}}" ng-if="metadata.description" />
+	  <meta name="viewport" content="width=device-width, minimum-scale=1.0, zoom=1" />
+	  <meta name="description" content="{{metadata.description}}" />
 
 	  <title>Socialapolitiker.se - Ordbaserad statistik från Sveriges politiker</title>
 	  <link rel="stylesheet" href="/css/style.css" />
@@ -15,48 +15,28 @@
   <body>
 	<div class="site-wrapper">
 		<header class="header">
-			<h1 class="header__title"><a ng-href="/">Socialapolitiker.se</a></h1>
-			<nav>
-				<ul class="main-nav">
-					<li>
-						<a class="js-menu-toggler" data-target=".js-party-dropdown">
-							Parti <i class="fa fa-caret-down"></i>
-						</a>
-					</li><!--
-				 --><li>
-				 		<a class="js-menu-toggler" data-target=".js-politician-dropdown">
-				 			Politiker <i class="fa fa-caret-down"></i>
-				 		</a>
-			 		</li>
-				</ul>
-				<div class="party-dropdown hidden js-party-dropdown" role="menu">
-					<div class="grid">
-						<div class="grid__item one-whole lap-one-third desk-one-quarter" th:each="party : ${parties}">
-							<a th:href="'/parti/' + ${party.urlName}" class="nav-link col-xs-12">
-								<span class="nav-link__image-wrapper"><i th:class="'nav-link__image party-icon-' + ${party.urlName}"></i></span>
-								<span class="nav-link__text" th:text="${party.name}">{{party.name}}</span>
-							</a>
-						</div>
+			<div class="grid">
+				<div class="grid__item one-whole lap-one-half desk-two-thirds vertically-middle">
+					<h1 class="header__title">
+						<a href="/">Socialapolitiker.se</a>
+					</h1>
+				</div><!--
+			  --><div class="grid__item one-whole lap-one-half desk-one-third vertically-middle">
+			  		<div class="header__link-wrapper">
+						<a class="header__link" href="/om">Om</a>
+						<a class="header__link" href="/status">Status</a>
 					</div>
 				</div>
-				<div th:if="${party}" class="politician-dropdown hidden js-politician-dropdown" role="menu">
-					<div class="grid">
-						<div th:each="politician : ${party.politicians}">
-							<div class="grid__item one-whole lap-one-third desk-one-quarter">
-							 	<a class="nav-link" th:href="'/politiker/' + ${politician.twitterScreenName}">
-						  			<span class="nav-link__image-wrapper">
-						  				<img th:if="${politician.profileImageUrl}" th:src="${politician.profileImageUrl.replace('normal', 'mini')}" class="nav-link__image" />
-						  				<i th:unless="${politician.profileImageUrl}" th:class="'nav-link__image party-icon-' + ${party.urlName}"></i>
-					  				</span>
-						  			<span class="nav-link__text" th:text="${politician.name}">{{politician.name}}</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</nav>
+			</div>
 		</header>
-		<main layout:fragment="main-content" class="main-content"></main>
+		<div class="grid">
+			<div class="grid__item one-whole desk-three-quarters">
+				<main layout:fragment="content" class="main-content"></main>
+			</div><!-- 
+		  --><div layout:fragment="aside" class="grid__item one-whole desk-one-quarter">
+			
+			</div>
+		</div>
 		<footer class="footer">
 			<div>
 				<em>
@@ -68,15 +48,19 @@
 			<div><a href="https://twitter.com/micke239" target="_blank">@micke239</a></div>
 		</footer>
 	</div>
-	    
-    <script type="text/javascript">
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 	
-	  ga('create', 'UA-51739473-1', 'socialapolitiker.se');
-	  ga('send', 'pageview');
-    </script>
+	<!-- script is needed here due to stupid DOMReady browser reasons. See ready/ready.js -->
+	<script type="text/javascript">
+		/*<![CDATA[*/
+		if (window.performance && performance.timing && performance.timing.navigationStart) {
+			var now = new Date().getTime();
+		  	var pageLoadTime = new Date().getTime() - performance.timing.navigationStart;
+		  	console.log("DOMReady after " + pageLoadTime + " ms");
+		}
+		
+		window.DOMIsReady = true;
+		window.handleDOMIsReady && window.handleDOMIsReady();
+		/*]]>*/
+	</script>
   </body>
 </html>

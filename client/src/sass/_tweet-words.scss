@@ -1,10 +1,12 @@
 .tweet-words {
 
+	overflow: hidden;
+	transition: max-height 0.5s;
+
 	&__word-col {
-		width: 1%;
-		max-width: 40%;
+		@extend .two-fifths;
+			
 		padding: $half-spacing-unit;
-		border-bottom: 1px dotted $gray-light;
 	}
 
 	&__word {
@@ -15,14 +17,14 @@
 	}
 
 	&__bar-col {
+		@extend .three-fifths;
 		padding: $half-spacing-unit;
-		border-bottom:1px dotted $gray-light;
 	}
 
 	&__bar {
-		background-color: $gray-light;
 		height: 100%;
 		vertical-align: middle;
 		display: inline-block;
+		background: $brand-primary;
 	}
 }

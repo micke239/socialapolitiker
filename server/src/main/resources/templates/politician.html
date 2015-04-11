@@ -7,16 +7,19 @@
 <title>Socialapolitiker.se - Ordbaserad statistik från Sveriges politiker</title>
 </head>
 <body>
-	<main layout:fragment="main-content">
-		<h1 th:text="${politician.name}">Anders Schröder</h1>
+	<main layout:fragment="content">
+		<h1 class="page-title" th:text="${politician.name}">Anders Schröder</h1>
 		<div class="grid">
-			<div class="grid__item one-whole desk-one-half">
-				<div th:include="word-data :: words-used" th:with="words=${wordViewData.words}" />
+			<div class="grid__item one-whole lap-one-whole desk-three-fifths">
+				<article th:include="word-data :: words-used" th:with="words=${tweetedWords}" />
 			</div><!--
-		 --><div class="grid__item one-whole lap-one-half desk-one-half">
-				<div th:include="word-data :: popular-words" th:with="popularWords=${wordViewData.popularWords}" />
+		 --><div class="grid__item one-whole lap-one-whole desk-two-fifths">
+				<article th:include="word-data :: popular-words" th:with="popularWords=${popularWords}" />
 			</div>
 		</div>
 	</main>
+	<aside layout:fragment="aside">
+ 		<div class="islet" th:include="politician-nav :: render" th:with="politicians=${party.politicians}"></div>
+	</aside>
 </body>
 </html>

@@ -4,25 +4,31 @@
 $base-spacing-unit: 18px;
 $half-spacing-unit: 9px; 
 
-// $bootstrap-location: "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+
+//$brand-primary:           #AEA8D3; //WISTFUL
+$brand-primary:           #EF4836; //WISTFUL
+
+$brand-darkest: 		  darken($brand-primary, 60%);
+$brand-darker:            darken($brand-primary, 40%);
+$brand-dark:              darken($brand-primary, 20%);
+//$brand-light:             lighten($brand-primary, 10%);
+//$brand-lighter:           lighten($brand-primary, 23%);
+//$brand-lightest:          lighten($brand-primary, 24.5%);
+$brand-light:             lighten($brand-primary, 10%);
+$brand-lighter:           lighten($brand-primary, 38%);
+$brand-lightest:          lighten($brand-primary, 40%);
 
 $almost-white: #fafafa;
+$brand-success:        	#87D37C; //GOSSIP
+$brand-info:            #81CEE0; //SPRAY
+$brand-warning:         #F5D76E; //CREAM CAN
+$brand-danger:          #EF4836; //FLAMINGO
 
-$gray-darker:            lighten(#000, 13.5%); // #222
-$gray-dark:              lighten(#000, 20%);   // #333
-$gray:                   lighten(#000, 33.5%); // #555
-$gray-light:             lighten(#000, 60%);   // #999
-$gray-lighter:             lighten(#000, 80%);   // #ccc
-$gray-lightest:           lighten(#000, 93.5%); // #eee
+$body-background: #FFFFFF;
 
-$brand-primary:         #8A60CC;
-$brand-success:         #5cb85c;
-$brand-info:            #5bc0de;
-$brand-warning:         #f0ad4e;
-$brand-danger:          #d9534f;
-
-$font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-
+$font-family: Avenir, "open sans",Helvetica,Arial,sans;
+$font-color-dark: #333; 
+$font-color-light: #eee; 
 
 $use-grids:         true;
 $use-flexbox:       false;
@@ -79,62 +85,3 @@ $h6-size:           14px!default; // .zeta
 
 $milli-size:        12px!default;
 $micro-size:        10px!default;
-
-/*
-$body-bg:               $almost-white;
-
-$jumbotron-padding: $base-spacing-unit * 2;
-$jumbotron-bg: $brand-primary;
-$navbar-default-bg: $almost-white;
-$navbar-margin-bottom: 0;
-
-// Core variables and mixins
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
-
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
-
-// Reset
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/normalize";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/print";
-
-// Core CSS
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/type";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/code";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/grid";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/tables";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/forms";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/buttons";
-
-// Components
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/component-animations";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/glyphicons";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/dropdowns";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/button-groups";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/input-groups";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/navs";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/navbar";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/breadcrumbs";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/pagination";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/pager";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/labels";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/badges";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/jumbotron";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/thumbnails";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/alerts";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/progress-bars";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/media";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/list-group";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/panels";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/wells";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/close";
-
-// Components w/ JavaScript
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/modals";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/tooltip";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/popovers";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/carousel";
-
-// Utility classes
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/utilities";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";*/

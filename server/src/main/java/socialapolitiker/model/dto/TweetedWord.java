@@ -1,22 +1,28 @@
 package socialapolitiker.model.dto;
 
-import java.math.BigDecimal;
+public class TweetedWord implements Comparable<TweetedWord> {
+    private String word;
+    private long count;
 
-public class TweetedWord {
-    private final String word;
-    private final int count;
+    public TweetedWord() {
+    }
 
-    public TweetedWord(String word, BigDecimal count) {
+    public TweetedWord(String word, long count) {
         this.word = word;
-        this.count = count.intValue();
+        this.count = count;
     }
 
     public String getWord() {
         return word;
     }
 
-    public int getCount() {
+    public long getCount() {
         return count;
+    }
+
+    @Override
+    public int compareTo(TweetedWord tweetedWord) {
+        return (int) (tweetedWord.count - count);
     }
 
 }
