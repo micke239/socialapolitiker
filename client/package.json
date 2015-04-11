@@ -7,8 +7,8 @@
 	},
 	"dependencies": {},
 	"devDependencies": {
-		"bower": "1.3.2",
-		"gulp": "3.8.7",
+		"bower": "*",
+		"gulp": "*",
 		"gulp-browserify": "*",
 		"gulp-uglify": "*"
 	},
