@@ -4,7 +4,9 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout">
 <head>
-<title>Socialapolitiker.se - Ordbaserad statistik från Sveriges politiker</title>
+	<title th:text="'Statistik från ' + ${party.name} + ' - Socialapolitiker.se'"></title>
+	<meta name="description" th:content="'Kolla in vilka ord svenska politiker från ' + ${party.name} + 'använder mest på twitter.'" />
+	<meta name="keywords" th:content="'socialapolitiker, sociala, politiker, politik, ordanalys, twitter, ' + ${party.name}" />
 </head>
 <body>
 	<main layout:fragment="content">
