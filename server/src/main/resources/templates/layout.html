@@ -9,8 +9,8 @@
 	  
 	  <title>Socialapolitiker.se - Ordbaserad statistik från Sveriges politiker</title>
 
-	  <link rel="stylesheet" href="/css/style.css" />
-	  <script src="/js/app.js" type="text/javascript" async="async"></script>
+	  <link rel="stylesheet" th:href="${beans.resourceHelper.resource('/css/style.css')}" />
+	  <script th:src="${beans.resourceHelper.resource('/js/app.js')}" type="text/javascript" async="async"></script>
   </head>
   <body>
 	<div class="site-wrapper">
@@ -20,13 +20,7 @@
 					<h1 class="header__title">
 						<a href="/">Socialapolitiker.se</a>
 					</h1>
-				</div><!--
-			  <div class="grid__item one-whole lap-one-half desk-one-third vertically-middle">
-			  		<div class="header__link-wrapper">
-						<a class="header__link" href="/om">Om</a>
-						<a class="header__link" href="/status">Status</a>
-					</div>
-				</div>-->
+				</div>
 			</div>
 		</header>
 		<div class="grid">

@@ -10,14 +10,17 @@
 		"bower": "*",
 		"gulp": "*",
 		"gulp-browserify": "*",
-		"gulp-uglify": "*"
+		"gulp-uglify": "*",
+		"gulp-rev": "*",
+		"gulp-rev-napkin": "*"
 	},
 	"scripts": {
 		"prepublish": "bower install --config.interactive=false",
 		"build": "gulp build",
 		"css": "compass compile --boring; gulp css",
-		"js": "gulp js",
+		"js": "gulp js-dev",
 		"static-files": "gulp static-files",
-		"img": "gulp img"
+		"img": "gulp img",
+		"clean": "rm -rf dist"
 	}
 }

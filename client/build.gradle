@@ -19,7 +19,7 @@ task npmInstall(type:Exec) {
     logging.captureStandardOutput LogLevel.INFO
     // but we do always want to see downloads in the log
     logging.captureStandardError LogLevel.LIFECYCLE
-
+	
     commandLine 'npm', 'install'
 }
 
@@ -29,7 +29,7 @@ task compassCompile(dependsOn: npmInstall, type:Exec) {
     logging.captureStandardError LogLevel.INFO
 
     commandLine 'compass', 'clean'
-    commandLine 'compass', 'compile', '--boring'
+    commandLine 'compass', 'compile', '-e', 'production', '--force',  '--boring'
 }
 
 task npmBuild(dependsOn: compassCompile, type:Exec) {
@@ -39,4 +39,13 @@ task npmBuild(dependsOn: compassCompile, type:Exec) {
     commandLine 'npm', 'run', 'build'
 }
 
+task npmClean(type:Exec) {
+    logging.captureStandardOutput LogLevel.INFO
+    logging.captureStandardError LogLevel.INFO
+    
+    commandLine 'npm', 'run', 'clean'
+}
+
+clean.dependsOn npmClean
+jar.dependsOn clean
 jar.dependsOn npmBuild
