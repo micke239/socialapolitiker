@@ -2,6 +2,10 @@
 	padding: $base-spacing-unit*2;
 	text-align: center;
 	
+	@include media-query(desk) {
+		display: table;
+	}
+	
 	%link-style {
 		font-weight: 100;
 		color: $brand-primary;
@@ -18,48 +22,17 @@
 		& > a {
 			@extend %link-style;
 		}
-	}
-	
-	&__link-wrapper {
-		@include media-query(lap-and-up){
-			text-align: right;
+
+		@include media-query(desk) {
+			padding-right: $base-spacing-unit;
+			display: table-cell;
 		}
 	}
 	
-	&__link {
-		@extend .gamma;
-		@extend %link-style;
-		margin-right: $base-spacing-unit;
-		
-		&:last-child {
-			margin-right: 0;
+	&__ad {
+		@include media-query(desk) {
+			display: table-cell;
+			width:100%;
 		}
-		
-		@include media-query(lap-and-up){
-			padding-left: $half-spacing-unit;
-			margin-right: 0;
-			
-			&:after {
-				content: '|';
-				padding-left: $half-spacing-unit;
-				color: $brand-primary;
-			}
-			
-			&:first-child {
-				padding-left: 0;
-			}
-			
-			&:last-child {
-				&:after {
-					padding-left: 0;
-					content: "";
-				}
-			}
-		}
-	}
-	
-	//lap-and-up specific styling
-	@include media-query(lap-and-up) {
-		text-align: left;
 	}
 }
