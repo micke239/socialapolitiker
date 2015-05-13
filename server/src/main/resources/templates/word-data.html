@@ -11,7 +11,7 @@
 							<div class="tweet-words__word" th:text="${word.word + ' (' + word.count + ')'}">ska (1735)</div>	
 						</td>
 						<td class="tweet-words__bar-col">
-							<span class="tweet-words__bar" th:style="'width:' + ${beans.usedWordsHelper.calculateBarWidth(word.count, highestCount)} + '%'"></span>
+							<span class="tweet-words__bar" th:style="'width:' + ${beans.usedWordsHelper.calculateBarWidth(word.count, highestCount)} + '%'" th:utext="'&amp;nbsp;'"></span>
 						</td>
 					</tr>
 				</table>

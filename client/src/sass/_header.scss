@@ -24,12 +24,18 @@
 		}
 
 		@include media-query(desk) {
+			vertical-align: top;
 			padding-right: $base-spacing-unit;
 			display: table-cell;
 		}
 	}
 	
 	&__ad {
+		& ins {
+			text-decoration: none;
+			border-bottom: 0;
+		}
+		
 		@include media-query(desk) {
 			display: table-cell;
 			width:100%;
