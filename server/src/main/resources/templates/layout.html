@@ -5,7 +5,7 @@
   <head>
 	  <meta charset="UTF-8" />
 		
-	  <meta name="viewport" content="width=device-width, minimum-scale=1.0, zoom=1" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1" />
 	  
 	  <title>Socialapolitiker.se - Ordbaserad statistik från Sveriges politiker</title>
 
@@ -15,11 +15,9 @@
   </head>
   <body>
 	<div class="site-wrapper">
-		<header class="header">
-			<h1 class="header__title">
-				<a href="/">Socialapolitiker.se</a>
-			</h1>
-			<div class="header__ad">
+		<div class="ad-container">
+			<span class="ad-container__ad-mark">Annons <span class="icon-caret-down"></span></span>
+			<div class="ad-container__ad">
 				<!-- Top-ad -->
 				<ins class="adsbygoogle"
 				     style="display:block"
@@ -30,13 +28,65 @@
 				(adsbygoogle = window.adsbygoogle || []).push({});
 				</script>
 			</div>
+		</div>
+	
+		<header class="header">
+			<div class="header__menu">
+				<a href="#" class="header__nav header__nav--search text--right js-nav__menu-button js-ga-sender"
+				   data-nav-id="politicians"
+				   data-ga-category="menu-button"
+				   data-ga-action="politicians">
+					Sök&nbsp;politiker		
+				</a>
+				<a href="#" class="header__nav header__nav--menu js-nav__menu-button js-ga-sender"
+				   data-nav-id="parties"
+				   data-ga-category="menu-button"
+				   data-ga-action="parties">
+					Välj&nbsp;parti
+				</a>
+			</div>
+			
+			<div layout:fragment="politicians" th:remove="tag"></div>
+			
+			<div class="politician-nav js-nav" data-nav-id="parties">
+				<div class="politician-nav__wrapper politician-nav__wrapper--party">
+					<h2>Partier</h2>
+					<ul class="politician-nav__list">
+						<li th:each="party : ${parties}">
+							<a class="politician-nav__item js-ga-sender" th:href="'/parti/' + ${party.urlName}"
+							   data-ga-category="menu-nav"
+							   data-ga-action="party"
+							   th:attr="data-ga-label=${party.urlName}">
+								<span  th:text="${party.name}"></span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+						
+			<h1 class="header__title">
+				<a href="/">Socialapolitiker.se</a>
+			</h1>
 		</header>
 		<div class="grid">
-			<div class="grid__item one-whole desk-three-quarters">
+			<div class="grid__item one-whole lap-and-up-three-quarters">
 				<main layout:fragment="content" class="main-content"></main>
-			</div><!-- 
-		  --><div layout:fragment="aside" class="grid__item one-whole desk-one-quarter">
-			
+			</div><!--
+		 --><div class="grid__item one-whole lap-and-up-one-quarter">
+				<div class="ad-container">
+					<span class="ad-container__ad-mark">Annons <span class="icon-caret-down"></span></span>
+					<div class="ad-container__ad">
+						<!-- side-ad -->
+						<ins class="adsbygoogle"
+						     style="display:block"
+						     data-ad-client="ca-pub-9380712090181626"
+						     data-ad-slot="4723380799"
+						     data-ad-format="auto"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</div>
+				</div>
 			</div>
 		</div>
 		<footer class="footer">
@@ -54,7 +104,8 @@
 	<!-- script is needed here due to stupid DOMReady browser reasons. See ready/ready.js -->
 	<script type="text/javascript">
 		/*<![CDATA[*/
-		if (window.performance && performance.timing && performance.timing.navigationStart) {
+		if (window.performance && performance.timing && performance.timing.navigationStart
+				&& window.console && window.console.log) {
 			var now = new Date().getTime();
 		  	var pageLoadTime = new Date().getTime() - performance.timing.navigationStart;
 		  	console.log("DOMReady after " + pageLoadTime + " ms");

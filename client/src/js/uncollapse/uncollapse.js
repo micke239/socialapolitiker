@@ -20,18 +20,16 @@ var init = function() {
 			
 			var currentHeight = parseInt($targetElement.css('max-height'), 10);
 			
-			console.log(currentHeight + ", " + targetHeight)
-			
 			if (currentHeight === targetHeight) {
 				$targetElement.css('max-height', origHeight + "px");
 				$targetElement.addClass('cut-box');
 				$text.text($text.text().replace('Färre', 'Fler'));
-				$icon.removeClass('fa-caret-up').addClass('fa-caret-down');
+				$icon.removeClass('icon-caret-up').addClass('icon-caret-down');
 			} else {
 				$targetElement.css('max-height', targetHeight + "px");
 				$targetElement.removeClass('cut-box');
 				$text.text($text.text().replace('Fler', 'Färre'));
-				$icon.removeClass('fa-caret-down').addClass('fa-caret-up');
+				$icon.removeClass('icon-caret-down').addClass('icon-caret-up');
 			}
 			
 		});

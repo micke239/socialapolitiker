@@ -17,6 +17,7 @@
 	"scripts": {
 		"prepublish": "bower install --config.interactive=false",
 		"build": "gulp build",
+		"build-dev": "gulp build-dev",
 		"css": "compass compile --boring; gulp css",
 		"js": "gulp js-dev",
 		"static-files": "gulp static-files",

@@ -36,7 +36,7 @@ gulp.task('static-files', function() {
 });
 
 gulp.task('fonts', function() {
-    return gulp.src('bower_components/fontawesome/fonts/*')
+    return gulp.src('src/fonts/*')
         .pipe(gulp.dest('dist/fonts'));
 });
 

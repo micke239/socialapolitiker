@@ -1,9 +1,11 @@
 .header {
-	padding: $base-spacing-unit*2;
-	text-align: center;
+	@extend .cf;
+	padding: 9px;
+	padding-bottom: $base-spacing-unit*2;
 	
-	@include media-query(desk) {
-		display: table;
+	@include media-query(lap-and-up) {
+		padding: $base-spacing-unit;
+		padding-top: $half-spacing-unit;
 	}
 	
 	%link-style {
@@ -17,28 +19,81 @@
 	}
 
 	&__title {
-		margin-bottom: $half-spacing-unit;
+		text-align: center;
+		margin-bottom: 0;
 
 		& > a {
 			@extend %link-style;
 		}
-
-		@include media-query(desk) {
-			vertical-align: top;
-			padding-right: $base-spacing-unit;
-			display: table-cell;
+		
+		@include media-query(lap-and-up) {
+			text-align: left;
+			float: left;
 		}
 	}
 	
-	&__ad {
-		& ins {
+	&__nav {
+		display: block;
+		float: right;
+		padding: $half-spacing-unit;
+		
+		&:hover {
+			background: $brand-lightest;
 			text-decoration: none;
-			border-bottom: 0;
 		}
 		
-		@include media-query(desk) {
-			display: table-cell;
-			width:100%;
+		&:focus {
+			outline: 0;
 		}
+		
+		@include media-query(lap-and-up) {
+			width: auto;
+			line-height: 30px;
+			vertical-align: middle;
+		}
+		
+		&:before {
+			@extend %icomoon;
+			@extend .gamma;
+			
+			display: inline-block;
+			vertical-align: text-bottom;
+			
+			@include media-query(palm) {
+				@include font-size(23px);
+			}
+		}
+		
+		&--menu {
+			@include media-query(palm) {
+				float:left;
+			}
+		}
+		
+		&--search:before {
+			@extend .icon-search;
+		}
+		
+		&--menu:before {
+			@extend .icon-bars;
+		}
+	}
+	
+	&__menu {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 10000000;
+		
+		border-bottom: 1px solid #ccc;
+	    width: 100%;
+	    background: white;
+	    
+	    @include media-query(lap-and-up) {
+	    	//unfix
+			position: static;
+			width: auto;
+			border-bottom: 0;
+	    }
 	}
 }

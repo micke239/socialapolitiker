@@ -1,12 +1,29 @@
+@mixin define-breakpoint($name) {
+	@include media-query($name) {
+		&:after {
+			content: '' + $name;
+			display: none;
+		}
+	}
+}
+
 html, body {
 	height: 100%;
 }
 
 body {
 	font-family:$font-family;
-	@include font-size(14px);
+	@include font-size(16px);
 	background-color: $body-background;
 	color: #333;
+	
+	@include media-query(lap-and-up) {
+		@include font-size(14px);
+	}
+	
+	@each $media in palm lap desk {
+		@include define-breakpoint($media);
+	}
 }
 
 h1, h2, h3, h4, h5, h6, .alpha, .beta, .gamma, .delta, .epsilon, .zeta {

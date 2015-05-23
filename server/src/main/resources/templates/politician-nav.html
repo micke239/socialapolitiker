@@ -1,27 +1,23 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head></head>
 <body>
-	<div th:fragment="render">
-		<div class="js-search politician-nav js-politician-nav inactive">
-			<h2>Politiker</h2>
-			<input class="js-search__search-field search" type="text" placeholder="Sök politiker" />
-			<ul class="politician-nav__list collapsed js-search__search-list cut-box">
-				<li th:each="politician : ${politicians}">
-					<a class="politician-nav__item" th:href="'/politiker/' + ${politician.twitterScreenName}">
-						<span  th:text="${politician.name}"></span>
-					</a>
-				</li>
-			</ul>
-			<div class="js-uncollapse politician-nav__more">
-				<a href="#">
-					<span class="js-uncollapse__text">Fler politiker</span>
-					<i class="js-uncollapse__icon fa fa-caret-down"></i>
-				</a>
+	<div th:fragment="render" th:remove="tag">
+		<div class="js-search politician-nav js-nav" data-nav-id="politicians">
+			<div class="politician-nav__wrapper">
+				<h2>Politiker <span th:if="${party}" th:text="'(' + ${party.name} + ')'"></span></h2>
+				<input class="js-search__search-field search" type="text" placeholder="Sök politiker" />
+				<ul class="politician-nav__list js-search__search-list">
+					<li th:each="politician : ${politicians}">
+						<a class="politician-nav__item js-ga-sender" th:href="'/politiker/' + ${politician.twitterScreenName}"
+							data-ga-category="menu-nav"
+							data-ga-action="politician"
+							th:attr="data-ga-label=${politician.twitterScreenName}">
+							<span  th:text="${politician.name}"></span>
+						</a>
+					</li>
+				</ul>
 			</div>
 		</div>
-		<a href="#" class="politician-nav__menu-button js-politician-nav__menu-button">
-			<i class="fa fa-bars"></i>
-		</a>
 	</div>
 </body>
 </html>

@@ -2,80 +2,78 @@ $politician-nav-border-color: $brand-light;
 
 .politician-nav {
 	position: absolute;
-	top: $base-spacing-unit * 4.5;
-	right: 0;
+	
 	width: 100%;
-	background: white;
-	padding: $base-spacing-unit;
-	min-height: 100%;
-	display: block;
-	transition: opacity 0.5s, visibility 0.5s;
+    background: white;
+    padding: 18px;
+	padding-top: 61px;
+	left: 0;
 	
-	@include media-query(desk) {
-		display: block;
-		position: static;
-		padding: 0;
-		min-height: auto;
-		transition: none;
+	//start hidden
+	top: -1100px;
+    max-height: 900px;
+    overflow: hidden;
+    
+    z-index: 9999999;
+    
+    border-bottom: 1px solid #ccc;
+    
+    @include media-query(lap-and-up) {
+	  width: 400px;
+	  left: auto;
+	  right: $base-spacing-unit;
+	  overflow: hidden;
+	  padding: 0;
+      margin-top: 48px;
+      padding-top: $base-spacing-unit;
+      border-bottom: 0;
 	}
 	
-	&.inactive {
-		min-height: none;
-		height: 1px;
-		visibility: hidden;
-		opacity: 0;
-		overflow: hidden;
-		transition: opacity 0.5s, visibility 0.5s, height 0s linear 0.5s;
+	.politician-nav__wrapper {
 		
-		@include media-query(desk) {
-			opacity: 1;
-			height: auto;
-			visibility: visible;
-			transition: none;
-			overflow: inherit;
-		}
-	}
+	    @include media-query(lap-and-up) {
+		    padding: $base-spacing-unit;
+		    border: 1px solid #ccc;
+		    position: relative;
+		    
+			&:after, &:before {
+				bottom: 100%;
+				left: 341px;
+				border: solid transparent;
+				content: " ";
+				height: 0;
+				width: 0;
+				position: absolute;
+				pointer-events: none;
+			}
+		
+			&:after {
+				border-color: rgba(255, 255, 255, 0);
+				border-bottom-color: #fff;
+				border-width: 18px;
+				margin-left: -18px;
+			}
+			
+			&:before {
+				border-color: rgba(204, 204, 204, 0);
+				border-bottom-color: #ccc;
+				border-width: 19px;
+				margin-left: -19px;
+		    }
+		    
+		    &.politician-nav__wrapper--party {
+		    	&:after, &:before {
+		    		left: 235px;
+		    	}
+		    }
+	    }
+    }
 	
-	&__menu-button {
-		position: absolute;
-		top: 0;
-		right: 0;
-		font-size:30px;
-		width: 45px;
-		height:45px;
-		padding: $half-spacing-unit;
-		text-align: right;
-		
-		& > i {
-			vertical-align: top;
-		}
-		
-		@include media-query(desk) {
-			display: none;
-		}
-	}
-
 	&__list {
 		margin-left: 0;
 		list-style-type: none;
 		border: 1px solid $politician-nav-border-color;
-		border-bottom: none;
-		max-height: none;
-		
-		@include media-query(desk) {
-			transition: max-height 0.5s;
-			overflow:hidden;
-			max-height:300px;
-		}
-		
-		// hack to remove fade-bottom on mobile
-		&:after {
-			content: none;
-			
-			@include media-query(desk) {
-				content: " ";
-			}
-		}
+		border-bottom: 0;
 	}
 	
 	&__item {
@@ -83,6 +81,7 @@ $politician-nav-border-color: $brand-light;
 		background: $brand-lightest;
 		border-bottom: 1px solid $politician-nav-border-color;
 		display:block;
+		
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		overflow: hidden;
@@ -91,48 +90,6 @@ $politician-nav-border-color: $brand-light;
 			background: inherit;
 			text-decoration: none;
 		}
-	}
-	
-	&__more {
-		text-align: center;
-		display: none;
 		
-		@include media-query(desk) {
-			display: block;
-		}
 	}
-}
-
-@-webkit-keyframes fadeIn {
-    0% {
-        display:none; 
-        opacity: 0;
-    }
-
-    1% {
-        display: block ; 
-        opacity: 0;
-    }
-
-    100% {
-        display: block ; 
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes fadeOut {
-    0% {
-        display:block; 
-        opacity: 1;
-    }
-
-    99% {
-        display: block ; 
-        opacity: 0;
-    }
-
-    100% {
-        display: none ; 
-        opacity: 0;
-    }
 }

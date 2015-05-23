@@ -6,7 +6,7 @@ $half-spacing-unit: 9px;
 
 
 //$brand-primary:           #AEA8D3; //WISTFUL
-$brand-primary:           #EF4836; //WISTFUL
+$brand-primary:           #EF4836; //FLAMINGO
 
 $brand-darkest: 		  darken($brand-primary, 60%);
 $brand-darker:            darken($brand-primary, 40%);
@@ -58,7 +58,7 @@ $use-greybox:       false;
 /**
  * Tell inuit.css when breakpoints start.
  */
-$lap-start:         481px!default;
+$lap-start:         768px!default;
 $desk-start:        1024px!default;
 $desk-wide-start:   1200px!default;
 

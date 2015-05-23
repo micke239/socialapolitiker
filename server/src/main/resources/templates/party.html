@@ -20,8 +20,8 @@
 			</div>
 		</div>
 	</main>
-	<aside layout:fragment="aside">
- 		<div class="islet" th:include="politician-nav :: render" th:with="politicians=${party.politicians}"></div>
-	</aside>
+	<div layout:fragment="politicians" th:remove="tag">
+ 		<div th:include="politician-nav :: render" th:with="politicians=${party.politicians},party=${party}"></div>
+	</div>
 </body>
 </html>

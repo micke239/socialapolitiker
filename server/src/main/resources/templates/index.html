@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout">
 <head>
@@ -18,15 +19,18 @@
  			Börja genom att välja parti i listan nedan eller sök bland politiker i menyn.
  		</p>
 		<h1 class="page-title">Partier</h1><!-- 
-	 --><a class="navigator" th:each="party : ${parties}" th:href="'/parti/' + ${party.urlName}">
+	 --><a class="navigator js-ga-sender" th:each="party : ${parties}" th:href="'/parti/' + ${party.urlName}"
+	       data-ga-category="index-nav"
+		   th:attr="data-ga-action=${party.urlName}">
+		   
 			<span class="navigator__image-wrapper">
 				<i th:class="'navigator__image party-icon-' + ${party.urlName}"></i>
 			</span>
 			<span class="navigator__text" th:text="${party.name}">{{party.name}}</span>
 		</a><!--
  --></main>
-	<aside layout:fragment="aside">
- 		<div class="islet" th:include="politician-nav :: render" th:with="politicians=${politicians}"></div>
-	</aside>
+	<div layout:fragment="politicians" th:remove="tag">
+ 		<div th:include="politician-nav :: render" th:with="politicians=${politicians}" th:remove="tag"></div>
+	</div>
 </body>
 </html>
