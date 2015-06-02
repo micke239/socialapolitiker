@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import socialapolitiker.model.dto.PoliticianSearchable;
 import socialapolitiker.model.dto.PopularWord;
 import socialapolitiker.model.dto.TweetedWord;
 import socialapolitiker.service.SocialapolitikerSearchService;
@@ -53,6 +54,22 @@ public class SocialapolitikerSearchServiceImpl implements SocialapolitikerSearch
     public List<PopularWord> getPopularWordsByParty(String partyUrlName) {
         PopularWord[] popularWords = restTemplate.getForObject(searchHost + "/popular-words/party?partyUrlName="
                 + partyUrlName, PopularWord[].class);
+
+        return Arrays.asList(popularWords);
+    }
+
+    @Override
+    public List<PoliticianSearchable> getPoliticians(String partyUrlName) {
+        PoliticianSearchable[] popularWords = restTemplate.getForObject(searchHost + "/politicians?partyUrlName="
+                + partyUrlName, PoliticianSearchable[].class);
+
+        return Arrays.asList(popularWords);
+    }
+
+    @Override
+    public List<PoliticianSearchable> getPoliticians() {
+        PoliticianSearchable[] popularWords = restTemplate.getForObject(searchHost + "/politicians",
+                PoliticianSearchable[].class);
 
         return Arrays.asList(popularWords);
     }

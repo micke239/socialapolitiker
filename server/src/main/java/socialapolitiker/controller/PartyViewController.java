@@ -41,6 +41,7 @@ public class PartyViewController extends LayoutController {
         });
 
         modelMap.put("party", party);
+        modelMap.put("politicians", socialapolitikerSearchService.getPoliticians(partyUrlName));
         modelMap.put("tweetedWords", tweetedWords);
         modelMap.put("popularWords", popularWords);
 

@@ -21,7 +21,7 @@
 		</div>
 	</main>
 	<div layout:fragment="politicians" th:remove="tag">
- 		<div th:include="politician-nav :: render" th:with="politicians=${party.politicians},party=${party}"></div>
+ 		<div th:include="politician-nav :: render" th:with="politicians=${politicians},party=${party}"></div>
 	</div>
 </body>
 </html>

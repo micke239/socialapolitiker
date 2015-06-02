@@ -33,7 +33,7 @@ public class PoliticianViewController extends LayoutController {
 
         Politician politician = politicianRepository.findOneByTwitterScreenName(twitterScreenName);
 
-        if (politician == null) {
+        if (politician == null || politician.getForceDisabledAt() != null) {
             throw new NoSuchRequestHandlingMethodException("getPoliticianView", PoliticianViewController.class);
         }
 
@@ -46,6 +46,7 @@ public class PoliticianViewController extends LayoutController {
 
         modelMap.put("politician", politician);
         modelMap.put("party", politician.getParty());
+        modelMap.put("politicians", socialapolitikerSearchService.getPoliticians(politician.getParty().getUrlName()));
         modelMap.put("tweetedWords", tweetedWords);
         modelMap.put("popularWords", popularWords);
 

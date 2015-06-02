@@ -46,6 +46,7 @@ public class Politician {
     private Date createdAt;
     private Date updatedAt;
     private Date lastImport;
+    private Date forceDisabledAt;
     private String description;
     private String profileImageUrl;
 
@@ -130,6 +131,14 @@ public class Politician {
 
     public void setProfileImageUrl(String profileImageUrl) {
         this.profileImageUrl = profileImageUrl;
+    }
+
+    public Date getForceDisabledAt() {
+        return forceDisabledAt;
+    }
+
+    public void setForceDisabledAt(Date forceDisabledAt) {
+        this.forceDisabledAt = forceDisabledAt;
     }
 
 }
