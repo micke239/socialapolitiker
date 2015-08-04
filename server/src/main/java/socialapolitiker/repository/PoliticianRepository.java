@@ -7,14 +7,14 @@ import org.springframework.data.jpa.repository.Query;
 
 import socialapolitiker.model.domain.Politician;
 import socialapolitiker.model.dto.PopularWord;
-import socialapolitiker.model.dto.TweetedWord;
+import socialapolitiker.model.dto.TweetedEntity;
 
 public interface PoliticianRepository extends JpaRepository<Politician, Long> {
     @Query(name = "popularWordsPolitician")
     List<PopularWord> getPopularWords(String twitterScreenName);
 
     @Query(name = "tweetedWordsPolitician")
-    List<TweetedWord> getTweetedWords(String twitterScreenName);
+    List<TweetedEntity> getTweetedWords(String twitterScreenName);
 
     List<Politician> findByPartyId(Long partyId);
 

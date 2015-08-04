@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMeth
 
 import socialapolitiker.model.domain.Party;
 import socialapolitiker.model.dto.PopularWord;
-import socialapolitiker.model.dto.TweetedWord;
+import socialapolitiker.model.dto.TweetedEntity;
 import socialapolitiker.repository.PartyRepository;
 import socialapolitiker.service.SocialapolitikerSearchService;
 
@@ -33,7 +33,7 @@ public class PartyViewController extends LayoutController {
             throw new NoSuchRequestHandlingMethodException("getPartyView", PartyViewController.class);
         }
 
-        List<TweetedWord> tweetedWords = socialapolitikerSearchService.getTweetedWordsByParty(partyUrlName);
+        List<TweetedEntity> tweetedWords = socialapolitikerSearchService.getTweetedWordsByParty(partyUrlName);
         List<PopularWord> popularWords = socialapolitikerSearchService.getPopularWordsByParty(partyUrlName);
 
         party.getPoliticians().sort((p1, p2) -> {

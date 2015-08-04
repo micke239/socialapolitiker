@@ -12,10 +12,10 @@
 	<main layout:fragment="content">
 		<h1 class="page-title" th:text="${party.name}">Socialdemokraterna</h1>
 		<div class="grid">
-			<div class="grid__item one-whole lap-one-whole desk-three-fifths">
+			<div class="grid__item one-whole lap-and-up-one-half">
 				<article th:include="word-data :: words-used" th:with="words=${tweetedWords}" />
 			</div><!--
-		 --><div class="grid__item one-whole lap-one-whole desk-two-fifths">
+		 --><div class="grid__item one-whole lap-and-up-one-half">
 				<article th:include="word-data :: popular-words" th:with="popularWords=${popularWords}" />
 			</div>
 		</div>

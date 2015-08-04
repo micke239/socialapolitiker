@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import socialapolitiker.model.dto.PoliticianSearchable;
 import socialapolitiker.model.dto.PopularWord;
-import socialapolitiker.model.dto.TweetedWord;
+import socialapolitiker.model.dto.TweetedEntity;
 import socialapolitiker.service.SocialapolitikerSearchService;
 
 @Service
@@ -27,17 +27,17 @@ public class SocialapolitikerSearchServiceImpl implements SocialapolitikerSearch
     }
 
     @Override
-    public List<TweetedWord> getTweetedWordsByPolitician(String politician) {
-        TweetedWord[] tweetedWords = restTemplate.getForObject(searchHost + "/tweeted-words/politician?politician="
-                + politician, TweetedWord[].class);
+    public List<TweetedEntity> getTweetedWordsByPolitician(String politician) {
+        TweetedEntity[] tweetedWords = restTemplate.getForObject(searchHost + "/tweeted-words/politician?politician="
+                + politician, TweetedEntity[].class);
 
         return Arrays.asList(tweetedWords);
     }
 
     @Override
-    public List<TweetedWord> getTweetedWordsByParty(String partyUrlName) {
-        TweetedWord[] tweetedWords = restTemplate.getForObject(searchHost + "/tweeted-words/party?partyUrlName="
-                + partyUrlName, TweetedWord[].class);
+    public List<TweetedEntity> getTweetedWordsByParty(String partyUrlName) {
+        TweetedEntity[] tweetedWords = restTemplate.getForObject(searchHost + "/tweeted-words/party?partyUrlName="
+                + partyUrlName, TweetedEntity[].class);
 
         return Arrays.asList(tweetedWords);
     }

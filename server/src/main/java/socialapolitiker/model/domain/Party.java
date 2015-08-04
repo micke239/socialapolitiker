@@ -17,7 +17,7 @@ import javax.persistence.SqlResultSetMappings;
 import javax.persistence.Table;
 
 import socialapolitiker.model.dto.PopularWord;
-import socialapolitiker.model.dto.TweetedWord;
+import socialapolitiker.model.dto.TweetedEntity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
         @SqlResultSetMapping(name = "PopularWord", classes = { @ConstructorResult(targetClass = PopularWord.class, columns = {
                 @ColumnResult(name = "year"), @ColumnResult(name = "month"), @ColumnResult(name = "word"),
                 @ColumnResult(name = "count") }) }),
-        @SqlResultSetMapping(name = "TweetedWord", classes = { @ConstructorResult(targetClass = TweetedWord.class, columns = {
+        @SqlResultSetMapping(name = "TweetedWord", classes = { @ConstructorResult(targetClass = TweetedEntity.class, columns = {
                 @ColumnResult(name = "word"), @ColumnResult(name = "count") }) }) })
 @NamedNativeQueries({
         @NamedNativeQuery(name = "popularWordsParty", query = "select t2.year, t2.month, t2.word, t.max as count from ("

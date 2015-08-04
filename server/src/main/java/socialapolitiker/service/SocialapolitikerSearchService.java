@@ -4,13 +4,13 @@ import java.util.List;
 
 import socialapolitiker.model.dto.PoliticianSearchable;
 import socialapolitiker.model.dto.PopularWord;
-import socialapolitiker.model.dto.TweetedWord;
+import socialapolitiker.model.dto.TweetedEntity;
 
 public interface SocialapolitikerSearchService {
 
-    List<TweetedWord> getTweetedWordsByPolitician(String politician);
+    List<TweetedEntity> getTweetedWordsByPolitician(String politician);
 
-    List<TweetedWord> getTweetedWordsByParty(String party);
+    List<TweetedEntity> getTweetedWordsByParty(String party);
 
     List<PopularWord> getPopularWordsByParty(String party);
 
