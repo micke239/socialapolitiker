@@ -3,19 +3,21 @@
 <body>
 	<div th:fragment="render" th:remove="tag">
 		<div class="js-search politician-nav js-nav" data-nav-id="politicians">
-			<div class="politician-nav__wrapper">
+			<div class="politician-nav__wrapper js-politician-nav__wrapper" data-nav-id="politicians">
 				<h2>Politiker <span th:if="${party}" th:text="'(' + ${party.name} + ')'"></span></h2>
-				<input class="js-search__search-field search" type="text" placeholder="Sök politiker" />
-				<ul class="politician-nav__list js-search__search-list">
-					<li th:each="politician : ${politicians}">
-						<a class="politician-nav__item js-ga-sender" th:href="'/politiker/' + ${politician.twitterScreenName}"
-							data-ga-category="menu-nav"
-							data-ga-action="politician"
-							th:attr="data-ga-label=${politician.twitterScreenName}">
-							<span  th:text="${politician.name}"></span>
-						</a>
-					</li>
-				</ul>
+				<div class="js-nav__palm-nav" data-nav-id="politicians">
+					<input class="js-search__search-field search" type="text" placeholder="Sök politiker" />
+					<ul class="politician-nav__list js-search__search-list">
+						<li th:each="politician : ${politicians}">
+							<a class="politician-nav__item js-ga-sender" th:href="'/politiker/' + ${politician.twitterScreenName}"
+								data-ga-category="menu-nav"
+								data-ga-action="politician"
+								th:attr="data-ga-label=${politician.twitterScreenName}">
+								<span  th:text="${politician.name}"></span>
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

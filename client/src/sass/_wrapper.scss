@@ -1,0 +1,23 @@
+.wrapper {
+	@extend .cf;
+}
+
+.wrapper__ads {
+	padding: 0 $half-spacing-unit;
+	@include media-query(lap-and-up) {
+		float: right;
+		width: 250px + $base-spacing-unit * 2;
+		padding: 0 $base-spacing-unit;
+	}
+}
+
+.wrapper__content {
+	margin-top: $base-spacing-unit;
+	padding: 0 $half-spacing-unit;
+	@include media-query(lap-and-up) {
+		float:left;
+		width: calc(100% - 304px);
+		margin-left: $base-spacing-unit;
+		margin-top: 0;
+	}
+}

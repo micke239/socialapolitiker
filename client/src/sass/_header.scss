@@ -1,12 +1,12 @@
 .header {
 	@extend .cf;
-	padding: 9px;
-	padding-bottom: $base-spacing-unit*2;
 	
-	@include media-query(lap-and-up) {
-		padding: $base-spacing-unit;
-		padding-top: $half-spacing-unit;
-	}
+	border-bottom: 1px solid #ccc;
+    width: 100%;
+    background-color: $content-background;
+    padding: $base-spacing-unit;
+    padding-bottom: $half-spacing-unit;
+    margin-bottom: $base-spacing-unit;
 	
 	%link-style {
 		font-weight: 100;
@@ -18,25 +18,33 @@
 		}
 	}
 
-	&__title {
-		text-align: center;
-		margin-bottom: 0;
+	&__logo-container {
+		display: inline-block;
+    	vertical-align: middle;
+	}
 
-		& > a {
-			@extend %link-style;
-		}
+	&__logo {
+		height: 25px;
+	}
+	
+	&__nav-container {
+		display: none;
 		
 		@include media-query(lap-and-up) {
-			text-align: left;
-			float: left;
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: 18px;
 		}
 	}
 	
 	&__nav {
 		display: block;
-		float: right;
-		padding: $half-spacing-unit;
-		
+    	padding: $half-spacing-unit;
+    	
+    	&:not(:last-of-type) {
+	    	border-bottom: 1px solid #ddd;
+    	}
+    	
 		&:hover {
 			background: $brand-lightest;
 			text-decoration: none;
@@ -47,9 +55,16 @@
 		}
 		
 		@include media-query(lap-and-up) {
+			display: inline-block;
 			width: auto;
 			line-height: 30px;
 			vertical-align: middle;
+			margin: -7px 0 0 $half-spacing-unit;
+	    	padding: 5px;
+			
+	    	&:not(:last-of-type) {
+		    	border-bottom: 0;
+	    	}
 		}
 		
 		&:before {
@@ -64,12 +79,6 @@
 			}
 		}
 		
-		&--menu {
-			@include media-query(palm) {
-				float:left;
-			}
-		}
-		
 		&--search:before {
 			@extend .icon-search;
 		}
@@ -79,21 +88,20 @@
 		}
 	}
 	
-	&__menu {
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: 10000000;
+	&__nav-bars {
+		@extend %icomoon;
+		@extend .icon-bars;
 		
-		border-bottom: 1px solid #ccc;
-	    width: 100%;
-	    background: white;
-	    
-	    @include media-query(lap-and-up) {
-	    	//unfix
-			position: static;
-			width: auto;
-			border-bottom: 0;
-	    }
+		float: right;
+		font-size: 25px;
+		
+		&:hover, &:visited {
+			text-decoration: none;
+			font-weight: inherit;
+		}
+		
+		@include media-query(lap-and-up) {
+			display: none;
+		}
 	}
 }

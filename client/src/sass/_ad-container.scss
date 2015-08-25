@@ -1,36 +1,13 @@
 .ad-container {
 	position: relative;
-	padding: $half-spacing-unit;
-	margin: 0 auto;
-	
-	&__ad-mark {
-	    margin-left: 9px;
-	    text-transform: uppercase;
-	    font-size: 10px;
-	    font-weight: bold;
-	  
-		@include media-query(lap-and-up) {
-			-ms-transform: rotate(90deg);
-			-webkit-transform: rotate(90deg);
-			transform: rotate(90deg);
-			
-			display:inline-block;
-			position: absolute;
-			top: 29px;
-			right: -($base-spacing-unit * 1.5);
-		}
-	}
-	
-	&__ad {
-		border: 1px dashed #ccc;
 
-		& ins {
-			border-bottom: 0;
-		}
+	& ins {
+		border-bottom: 0;
 	}
+}
+
+.ad-container--top {
+	@extend .ad-container;
 	
-	@include media-query(lap-and-up) {
-		margin-right: 18px;
-	}
-	
+	margin-bottom: $base-spacing-unit;
 }

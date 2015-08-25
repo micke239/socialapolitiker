@@ -13,6 +13,8 @@
 /* ICONS */
 @import "compass/utilities/sprites";
 @import "../img/party-icon/*.png";
+$party-icon-sprite-dimensions: true;
+.party-icon-sprite{display:inline-block;}
 @include all-party-icon-sprites;
 
 
@@ -32,7 +34,7 @@
 @import "navigator";
 @import "header";
 @import "main-content";
-@import "site-wrapper";
+@import "wrapper";
 @import "footer";
 @import "home";
 @import "tweet-words";

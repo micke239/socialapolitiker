@@ -1,5 +1,9 @@
-@include media-query(palm) {
-	.island {
-		padding: $half-spacing-unit;
+.island {
+	border: 1px solid #ddd;
+	background-color: $content-background;
+	padding: $base-spacing-unit;
+	
+	@include media-query(lap-and-up) {
+		padding: $base-spacing-unit $base-spacing-unit * 2;
 	}
 }

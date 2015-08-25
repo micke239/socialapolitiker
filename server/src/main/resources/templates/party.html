@@ -10,12 +10,18 @@
 </head>
 <body>
 	<main layout:fragment="content">
-		<h1 class="page-title" th:text="${party.name}">Socialdemokraterna</h1>
+		<div class="island">
+			<h1 class="page-title">
+				<i th:class="'page-title__img party-icon-' + ${party.urlName}"></i>
+				<span class="vertically-middle" th:text="${party.name}">Socialdemokraterna</span>
+				<small th:text="'(' + ${party.politicians.size()} + ' politiker)'"></small>
+			</h1>
+		</div>
 		<div class="grid">
-			<div class="grid__item one-whole lap-and-up-one-half">
+			<div class="grid__item one-whole desk-one-half">
 				<article th:include="word-data :: words-used" th:with="words=${tweetedWords}" />
 			</div><!--
-		 --><div class="grid__item one-whole lap-and-up-one-half">
+		 --><div class="grid__item one-whole desk-one-half">
 				<article th:include="word-data :: popular-words" th:with="popularWords=${popularWords}" />
 			</div>
 		</div>

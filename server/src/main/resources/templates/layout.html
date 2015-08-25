@@ -8,79 +8,104 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1" />
 	  
 	  <title>Socialapolitiker.se - Ordbaserad statistik från Sveriges politiker</title>
-
+	  
 	  <link rel="stylesheet" th:href="${beans.resourceHelper.resource('/css/style.css')}" />
 	  <script th:src="${beans.resourceHelper.resource('/js/app.js')}" type="text/javascript" async="async"></script>
 	  <script async="async" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	  
+	  <link rel="shortcut icon" href="favicon.ico?v=2" />
   </head>
   <body>
-	<div class="site-wrapper">
-		<div class="ad-container">
-			<span class="ad-container__ad-mark">Annons <span class="icon-caret-down"></span></span>
-			<div class="ad-container__ad">
-				<!-- Top-ad -->
+ 	 <header class="header">
+		<a class="header__logo-container" href="/"><img class="header__logo" src="/img/logo.svg" title="Socialapolitiker.se logo" alt="Socialapolitiker.se"/></a>
+		
+		<a href="#" class="header__nav-bars not-interactive js-nav__palm"></a>
+		
+		<div class="header__nav-container js-nav__container">
+			<a href="#" class="header__nav header__nav--menu js-nav__menu-button js-ga-sender"
+			   data-nav-id="parties"
+			   data-ga-category="menu-button"
+			   data-ga-action="parties">
+				Välj&nbsp;parti <span th:if="${party}" th:text="'» ' + ${party.name} + ''"></span>
+			</a><!--
+		 --><a href="#" class="header__nav header__nav--search js-nav__menu-button js-ga-sender"
+			   data-nav-id="politicians"
+			   data-ga-category="menu-button"
+			   data-ga-action="politicians">
+				Sök&nbsp;politiker <span th:if="${politician}" th:text="'» ' + ${politician.name} + ''"></span>	
+			</a>
+			
+			<div layout:fragment="politicians" th:remove="tag"></div>
+		
+			<div class="politician-nav js-nav" data-nav-id="parties">
+				<div class="politician-nav__wrapper politician-nav__wrapper--party js-politician-nav__wrapper" data-nav-id="parties">
+					<h2>Partier</h2>
+					<div class="js-nav__palm-nav" data-nav-id="parties">
+						<ul class="politician-nav__list">
+							<li th:each="party : ${parties}">
+								<a class="politician-nav__item js-ga-sender" th:href="'/parti/' + ${party.urlName}"
+								   data-ga-category="menu-nav"
+								   data-ga-action="party"
+								   th:attr="data-ga-label=${party.urlName}">
+									<span  th:text="${party.name}"></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+  
+  	<!--/*
+  	<div class="ad-container--top">
+		<!-- Top-ad -->
+		<ins class="adsbygoogle"
+		     style="display:block"
+		     data-ad-client="ca-pub-9380712090181626"
+		     data-ad-slot="7775225593"
+		     data-ad-format="auto"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+  	</div> */-->
+  
+  	<div class="wrapper">
+	  	<div class="wrapper__ads">
+	 		<div class="ad-container">
+				<!-- side-ad -->
 				<ins class="adsbygoogle"
 				     style="display:block"
 				     data-ad-client="ca-pub-9380712090181626"
-				     data-ad-slot="7775225593"
+				     data-ad-slot="4723380799"
 				     data-ad-format="auto"></ins>
 				<script>
 				(adsbygoogle = window.adsbygoogle || []).push({});
 				</script>
 			</div>
+		</div>	
+	  
+		<div class="wrapper__content">
+			<main layout:fragment="content" class="main-content"></main>
 		</div>
-	
-		<header class="header">
-			<div class="header__menu">
-				<a href="#" class="header__nav header__nav--search text--right js-nav__menu-button js-ga-sender"
-				   data-nav-id="politicians"
-				   data-ga-category="menu-button"
-				   data-ga-action="politicians">
-					Sök&nbsp;politiker		
-				</a>
-				<a href="#" class="header__nav header__nav--menu js-nav__menu-button js-ga-sender"
-				   data-nav-id="parties"
-				   data-ga-category="menu-button"
-				   data-ga-action="parties">
-					Välj&nbsp;parti
-				</a>
-			</div>
-			
-			<div layout:fragment="politicians" th:remove="tag"></div>
-			
-			<div class="politician-nav js-nav" data-nav-id="parties">
-				<div class="politician-nav__wrapper politician-nav__wrapper--party">
-					<h2>Partier</h2>
-					<ul class="politician-nav__list">
-						<li th:each="party : ${parties}">
-							<a class="politician-nav__item js-ga-sender" th:href="'/parti/' + ${party.urlName}"
-							   data-ga-category="menu-nav"
-							   data-ga-action="party"
-							   th:attr="data-ga-label=${party.urlName}">
-								<span  th:text="${party.name}"></span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-						
-			<h1 class="header__title">
-				<a href="/">Socialapolitiker.se</a>
-			</h1>
-		</header>
-		<main layout:fragment="content" class="main-content"></main>
-		<footer class="footer">
-			<div>
-				<em>
-					Data sammanställdes 
-					<span th:text="${beans.dateFormatter.formatDate(cacheGenerated)}">
-						yyyy-MM-dd HH:mm</span>
-				</em>
-			</div>
-			<div><a href="https://twitter.com/micke239" target="_blank">@micke239</a></div>
-		</footer>
 	</div>
-	
+
+	<footer class="footer">
+		<div>
+			<em>
+				All statistik är genererad baserat på data från <a href="http://twitter.com/" target="_blank">twitter</a>.
+			</em>
+		</div>
+		<div>
+			<em>
+				Data sammanställdes senast
+				<span th:text="${beans.dateFormatter.formatDate(cacheGenerated)}">
+					yyyy-MM-dd HH:mm</span>.
+			</em>
+		</div>
+		<div><a href="https://twitter.com/micke239" target="_blank">@micke239</a></div>
+	</footer>
+
 	<!-- script is needed here due to stupid DOMReady browser reasons. See ready/ready.js -->
 	<script type="text/javascript">
 		/*<![CDATA[*/

@@ -1,9 +1,0 @@
-.site-wrapper {
-	min-height: 100%;
-	overflow-x: hidden;
-	padding-top: 43px;
-	
-	@include media-query(lap-and-up) {
-		padding-top: 0;
-	}
-}	

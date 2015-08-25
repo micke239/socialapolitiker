@@ -1,7 +1,0 @@
-.main-content {
-	padding: 0 $half-spacing-unit;
-	
-	@include media-query(lap-and-up) {
-		padding: 0 $base-spacing-unit * 2;
-	}
-}

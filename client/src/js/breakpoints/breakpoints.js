@@ -30,7 +30,7 @@ MediaQueryListener.prototype = {
         var self = this;
         
         var calculateBreakpoint = function() {
-        	self.currentBreakpoint = self.afterElement.getPropertyValue('content');
+        	self.currentBreakpoint = self.afterElement.getPropertyValue('content').replace(/['"]/g, "");
         	
         	if (self.currentBreakpoint !== self.lastBreakpoint) {
         		$(window).trigger('breakpoint-change', self.currentBreakpoint);

@@ -10,23 +10,29 @@
 </head>
 <body>
 	<main layout:fragment="content">
-		<h1 class="page-title">
-			<span th:text="${politician.name}">Anders Schröde</span>
-			<small>
-				<a class="js-ga-sender"
-					data-ga-category="poltician"
-					data-ga-action="twitter-link"
-					th:attr="data-ga-label=${politician.twitterScreenName}"
-					th:href="'http://www.twitter.com/' + ${politician.twitterScreenName}" 
-					th:text="'(@' + ${politician.twitterScreenName} + ')'"
-					target="_blank"></a>
-			</small>
-		</h1>
+		<div class="island">
+			<h1 class="page-title">
+				<img class="page-title__img--round-corners" th:if="${politician.profileImageUrl}" th:src="${politician.profileImageUrl}" />
+				<span class="vertically-middle" th:text="${politician.name}">Anders Schröde</span>
+				<small class="vertically-middle">
+					<a class="js-ga-sender"
+						data-ga-category="poltician"
+						data-ga-action="twitter-link"
+						th:attr="data-ga-label=${politician.twitterScreenName}"
+						th:href="'http://www.twitter.com/' + ${politician.twitterScreenName}" 
+						th:text="'(@' + ${politician.twitterScreenName} + ')'"
+						target="_blank"></a>
+				</small>
+			</h1>
+			<p th:if="${politician.description}" th:utext="${beans.htmlHelper.convertUrlsToAnchors(politician.description)}">
+			
+			</p>
+		</div>
 		<div class="grid">
-			<div class="grid__item one-whole lap-and-up-one-half">
+			<div class="grid__item one-whole desk-one-half">
 				<article th:include="word-data :: words-used" th:with="words=${tweetedWords}" />
 			</div><!--
-		 --><div class="grid__item one-whole lap-and-up-one-half">
+		 --><div class="grid__item one-whole desk-one-half">
 				<article th:include="word-data :: popular-words" th:with="popularWords=${popularWords}" />
 			</div>
 		</div>

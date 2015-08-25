@@ -1,93 +1,80 @@
 var $ = require('../../../bower_components/jquery/dist/jquery.js');
 var breakpoints = require('../breakpoints/breakpoints.js');
 
-var WINDOW_HEIGHT = $(window).height();
-var TOP = "-" + WINDOW_HEIGHT + "px";
-var MAX_HEIGHT = WINDOW_HEIGHT + "px";
+//work around for iOS 300ms delay
+var CLICK_OR_TOUCH = (('ontouchend' in window)) ? 'touchend' : 'click';
 
-var shouldAnimate = function() {
+var $navContainer = $('.js-nav__container');
+
+var isPalm = function() {
 	return breakpoints.currentBreakpoint === "palm";
 };
 
 var initNav = function() {
 	var $nav = $(this);
 	var navId = $nav.data('navId');
+	var isOpen = false;
 	
-	var isVisible = false;
-	
-	var hidingDone = function() {
-		isVisible = false;
-	};
-	
-	var showingDone = function() {
-		$nav.css('maxHeight', "none");
-		isVisible = true;
-	};
-	
-	var hide = function($nav, animate) {
-		animate = animate && shouldAnimate();
-		var top = TOP;
-		
-		if (breakpoints.currentBreakpoint !== "palm") {
-			top = (parseInt(TOP, 10) - 200) + "px";
-		}
-		
-		$nav.css('maxHeight', MAX_HEIGHT)
-		if (animate) {
-			$nav.animate({
-				top: top
-			}, 250, hidingDone);
+	var hide = function($nav, breakpointChange) {
+		if ((breakpointChange && !isPalm()) || (!breakpointChange && isPalm())) {
+			var $palmNav = $('.js-nav__palm-nav[data-nav-id="' + navId + '"]');
+			
+			$('.js-politician-nav__wrapper[data-nav-id="' + navId + '"]').append($palmNav);
 		} else {
-			$nav.css('top', top)
-			hidingDone();
+			$nav.hide();	
 		}
+		
+		isOpen = false;
 	};
 
-	var show = function($nav, animate) {
-		animate = animate && shouldAnimate();
-		
-		var top = $(window).scrollTop() + "px";
-		if (breakpoints.currentBreakpoint !== "palm") {
-			top = "auto";
-		}
-		
-		if (animate) {
-			$nav.animate({
-				top: top
-			}, 250, showingDone);
+	var show = function($button, $nav) {
+		if (isPalm()) {
+			var $palmNav = $nav.find('.js-nav__palm-nav');
+			$button.after($palmNav);
 		} else {
-			$nav.css('top', top);
-			showingDone();
+			$nav.css('left', $button.offset().left - 300 + $button.width() / 2)
+			$nav.show();
 		}
+		
+		isOpen = true;
 	};
 	
-	//work around for iOS 300ms delay
-	var clickOrTouch = (('ontouchend' in window)) ? 'touchend' : 'click';
-	$('.js-nav__menu-button').on(clickOrTouch, function(e) {
+	$('.js-nav__menu-button').on(CLICK_OR_TOUCH, function(e) {
 		e.preventDefault();
 		
-		if ($(this).data("navId") !== navId || isVisible) {
-			hide($nav, true);
+		if ($(this).data("navId") !== navId || isOpen) {
+			hide($nav);
 		} else {
-			show($nav, true);
+			show($(this), $nav);
 		}
 	});
 	
 	$(window).on('breakpoint-change', function(e, breakpoint) {
-		if (breakpoint === "palm" 
-			|| breakpoints.lastBreakpoint === "palm") {
-			var shouldShow = isVisible;
-			
-			hide($nav, false);
-			if (shouldShow) {
-				show($nav, false);
-			}
+		if (isOpen) {
+			hide($nav, true);
 		}
+	});
+};
+
+var initPalm = function() {
+	$(this).on(CLICK_OR_TOUCH, function(e) {
+		e.preventDefault();
+		
+		if ($navContainer.is(':visible')) {
+			$navContainer.slideUp();
+		} else {
+			$navContainer.slideDown();
+		}
+	});
+	
+	$(window).on('breakpoint-change', function(e, breakpoint) {
+		$navContainer.removeAttr('style');
 	});
 };
 
 var init = function() {
 	$('.js-nav').each(initNav);
+	$('.js-nav__palm').each(initPalm);
 };
 
 module.exports = {
