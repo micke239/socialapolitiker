@@ -59,6 +59,54 @@ public class SocialapolitikerSearchServiceImpl implements SocialapolitikerSearch
     }
 
     @Override
+    public List<TweetedEntity> getTweetedDomainsByPolitician(String politician) {
+        TweetedEntity[] popularWords = restTemplate.getForObject(searchHost + "/tweeted-domains/politician?politician="
+                + politician, TweetedEntity[].class);
+
+        return Arrays.asList(popularWords);
+    }
+
+    @Override
+    public List<TweetedEntity> getTweetedDomainsByParty(String partyUrlName) {
+        TweetedEntity[] popularWords = restTemplate.getForObject(searchHost + "/tweeted-domains/party?partyUrlName="
+                + partyUrlName, TweetedEntity[].class);
+
+        return Arrays.asList(popularWords);
+    }
+
+    @Override
+    public List<TweetedEntity> getTweetedHashtagsByPolitician(String politician) {
+        TweetedEntity[] popularWords = restTemplate.getForObject(searchHost
+                + "/tweeted-hashtags/politician?politician=" + politician, TweetedEntity[].class);
+
+        return Arrays.asList(popularWords);
+    }
+
+    @Override
+    public List<TweetedEntity> getTweetedHashtagsByParty(String partyUrlName) {
+        TweetedEntity[] popularWords = restTemplate.getForObject(searchHost + "/tweeted-hashtags/party?partyUrlName="
+                + partyUrlName, TweetedEntity[].class);
+
+        return Arrays.asList(popularWords);
+    }
+
+    @Override
+    public List<TweetedEntity> getTweetedUserMentionsByPolitician(String politician) {
+        TweetedEntity[] popularWords = restTemplate.getForObject(searchHost
+                + "/tweeted-user-mentions/politician?politician=" + politician, TweetedEntity[].class);
+
+        return Arrays.asList(popularWords);
+    }
+
+    @Override
+    public List<TweetedEntity> getTweetedUserMentionsByParty(String partyUrlName) {
+        TweetedEntity[] popularWords = restTemplate.getForObject(searchHost
+                + "/tweeted-user-mentions/party?partyUrlName=" + partyUrlName, TweetedEntity[].class);
+
+        return Arrays.asList(popularWords);
+    }
+
+    @Override
     public List<PoliticianSearchable> getPoliticians(String partyUrlName) {
         PoliticianSearchable[] popularWords = restTemplate.getForObject(searchHost + "/politicians?partyUrlName="
                 + partyUrlName, PoliticianSearchable[].class);

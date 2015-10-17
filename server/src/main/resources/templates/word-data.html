@@ -3,7 +3,7 @@
 <body>
 	<div th:fragment="words-used">
 		<div class="island">
-			<h2>Ord som använts</h2>
+			<h2>Twittrade ord</h2>
 			<div class="tweet-words cut-box">
 				<table>
 					<tr th:each="word : ${words}" th:with="highestCount = ${words[0].count}">
@@ -26,7 +26,7 @@
 	</div>
 	<div th:fragment="popular-words">
 		<div class="island">
-			<h2>Populära ord per månad</h2>
+			<h2>Populäraste ord, varje månad</h2>
 			<div class="popular-words cut-box">
 				<div th:each="word : ${popularWords}">
 					<span th:text="${beans.dateFormatter.formatMonth(word.date.month) + ' ' + word.date.year}">januari 2014</span>: 
@@ -41,5 +41,74 @@
 			</div>
 		</div>
 	</div>
+	<div th:fragment="domains-used">
+        <div class="island">
+            <h2>Twittrade hemsidor (domäner)</h2>
+            <div class="tweet-words cut-box">
+                <table>
+                    <tr th:each="word : ${words}" th:with="highestCount = ${words[0].count}">
+                        <td class="tweet-words__word-col">
+                            <a class="tweet-words__word" th:text="${word.entity + ' (' + word.count + ')'}" th:href="'http://' + ${word.entity} + '/'" target="_blank">ska (1735)</a>  
+                        </td>
+                        <td class="tweet-words__bar-col">
+                            <span class="tweet-words__bar" th:style="'width:' + ${beans.usedWordsHelper.calculateBarWidth(word.count, highestCount)} + '%'" th:utext="'&amp;nbsp;'"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="js-uncollapse centered push--top">
+                <a href="#">
+                    <span class="js-uncollapse__text">Fler använda hemsidor</span>
+                    <i class="js-uncollapse__icon icon-caret-down"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div th:fragment="hashtags-used">
+        <div class="island">
+            <h2>Twittrade hashtags</h2>
+            <div class="tweet-words cut-box">
+                <table>
+                    <tr th:each="word : ${words}" th:with="highestCount = ${words[0].count}">
+                        <td class="tweet-words__word-col">
+                            <a class="tweet-words__word" th:text="${word.entity + ' (' + word.count + ')'}" th:href="'https://twitter.com/hashtag/' + ${word.entity.replace('#', '')}" target="_blank">ska (1735)</a>  
+                        </td>
+                        <td class="tweet-words__bar-col">
+                            <span class="tweet-words__bar" th:style="'width:' + ${beans.usedWordsHelper.calculateBarWidth(word.count, highestCount)} + '%'" th:utext="'&amp;nbsp;'"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="js-uncollapse centered push--top">
+                <a href="#">
+                    <span class="js-uncollapse__text">Fler använda hashtags</span>
+                    <i class="js-uncollapse__icon icon-caret-down"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div th:fragment="users-mentioned">
+        <div class="island">
+            <h2>Twittrade användare</h2>
+            <div class="tweet-words cut-box">
+                <table>
+                    <tr th:each="word : ${words}" th:with="highestCount = ${words[0].count}">
+                        <td class="tweet-words__word-col">
+                            <a class="tweet-words__word" th:text="${word.entity + ' (' + word.count + ')'}" th:href="'https://www.twitter.com/' + ${word.entity.replace('@', '')}" target="_blank">ska (1735)</a>  
+                        </td>
+                        <td class="tweet-words__bar-col">
+                            <span class="tweet-words__bar" th:style="'width:' + ${beans.usedWordsHelper.calculateBarWidth(word.count, highestCount)} + '%'" th:utext="'&amp;nbsp;'"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="js-uncollapse centered push--top">
+                <a href="#">
+                    <span class="js-uncollapse__text">Fler nämnda användare</span>
+                    <i class="js-uncollapse__icon icon-caret-down"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

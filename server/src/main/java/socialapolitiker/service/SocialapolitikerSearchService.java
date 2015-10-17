@@ -19,4 +19,16 @@ public interface SocialapolitikerSearchService {
     List<PoliticianSearchable> getPoliticians();
 
     List<PoliticianSearchable> getPoliticians(String partyUrlName);
+
+    List<TweetedEntity> getTweetedDomainsByPolitician(String politician);
+
+    List<TweetedEntity> getTweetedDomainsByParty(String partyUrlName);
+
+    List<TweetedEntity> getTweetedHashtagsByPolitician(String politician);
+
+    List<TweetedEntity> getTweetedHashtagsByParty(String partyUrlName);
+
+    List<TweetedEntity> getTweetedUserMentionsByPolitician(String politician);
+
+    List<TweetedEntity> getTweetedUserMentionsByParty(String partyUrlName);
 }

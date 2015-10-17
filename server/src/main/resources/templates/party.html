@@ -23,7 +23,16 @@
 			</div><!--
 		 --><div class="grid__item one-whole desk-one-half">
 				<article th:include="word-data :: popular-words" th:with="popularWords=${popularWords}" />
-			</div>
+			</div><!--
+         --><div class="grid__item one-whole desk-one-half">
+                <article th:include="word-data :: domains-used" th:with="words=${tweetedDomains}" />
+            </div><!--
+         --><div class="grid__item one-whole desk-one-half">
+                <article th:include="word-data :: hashtags-used" th:with="words=${tweetedHashtags}" />
+            </div><!--
+         --><div class="grid__item one-whole desk-one-half">
+                <article th:include="word-data :: users-mentioned" th:with="words=${tweetedUserMentions}" />
+            </div>
 		</div>
 	</main>
 	<div layout:fragment="politicians" th:remove="tag">

@@ -34,6 +34,10 @@ public class PartyViewController extends LayoutController {
         }
 
         List<TweetedEntity> tweetedWords = socialapolitikerSearchService.getTweetedWordsByParty(partyUrlName);
+        List<TweetedEntity> tweetedDomains = socialapolitikerSearchService.getTweetedDomainsByParty(partyUrlName);
+        List<TweetedEntity> tweetedUserMentions = socialapolitikerSearchService
+                .getTweetedUserMentionsByParty(partyUrlName);
+        List<TweetedEntity> tweetedHashtags = socialapolitikerSearchService.getTweetedHashtagsByParty(partyUrlName);
         List<PopularWord> popularWords = socialapolitikerSearchService.getPopularWordsByParty(partyUrlName);
 
         party.getPoliticians().sort((p1, p2) -> {
@@ -44,6 +48,9 @@ public class PartyViewController extends LayoutController {
         modelMap.put("politicians", socialapolitikerSearchService.getPoliticians(partyUrlName));
         modelMap.put("tweetedWords", tweetedWords);
         modelMap.put("popularWords", popularWords);
+        modelMap.put("tweetedDomains", tweetedDomains);
+        modelMap.put("tweetedUserMentions", tweetedUserMentions);
+        modelMap.put("tweetedHashtags", tweetedHashtags);
 
         return "party";
     }
